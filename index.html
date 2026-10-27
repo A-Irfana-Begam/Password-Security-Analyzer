@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Password Security Analyzer - Analyze password strength and security requirements."
+    >
+
+    <title>Password Security Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🔐
+            </div>
+
+            <div class="brand-text">
+                <h1>PASSWORD SECURITY</h1>
+                <span>ANALYZER</span>
+            </div>
+
+        </div>
+
+        <div class="security-badge">
+            <span class="status-dot"></span>
+            SECURITY TOOL
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                PASSWORD SECURITY LAB
+            </p>
+
+            <h2>
+                Analyze Your
+                <span>Password Strength</span>
+            </h2>
+
+            <p class="hero-description">
+                Evaluate your password using length, character diversity,
+                and security requirements.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="container">
+
+
+        <!-- =========================
+             PASSWORD ANALYZER
+        ========================== -->
+        <section class="analyzer-card">
+
+            <div class="card-header">
+
+                <div>
+                    <p class="section-label">
+                        PASSWORD ANALYSIS
+                    </p>
+
+                    <h3>
+                        Test Your Password
+                    </h3>
+                </div>
+
+                <div class="shield-icon">
+                    🛡️
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD INPUT -->
+            <div class="input-section">
+
+                <label for="password">
+                    Enter Password
+                </label>
+
+                <div class="password-input-wrapper">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password..."
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="toggle-button"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 PASSWORD STRENGTH
+            ========================== -->
+            <div class="strength-section">
+
+                <div class="strength-header">
+
+                    <span>
+                        Password Strength
+                    </span>
+
+                    <strong id="strengthText">
+                        NOT CHECKED
+                    </strong>
+
+                </div>
+
+
+                <div class="strength-bar">
+
+                    <div
+                        id="strengthFill"
+                        class="strength-fill"
+                    ></div>
+
+                </div>
+
+
+                <div class="score-row">
+
+                    <span>
+                        Security Score
+                    </span>
+
+                    <strong>
+                        <span id="score">0</span>/100
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 PASSWORD REQUIREMENTS
+            ========================== -->
+            <div class="requirements-section">
+
+                <div class="requirements-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            SECURITY CHECKS
+                        </p>
+
+                        <h3>
+                            Password Requirements
+                        </h3>
+
+                    </div>
+
+                    <div
+                        class="requirement-count"
+                        id="requirementCount"
+                    >
+                        0 / 5
+                    </div>
+
+                </div>
+
+
+                <div class="requirements-grid">
+
+
+                    <!-- LENGTH -->
+                    <div
+                        class="requirement"
+                        id="lengthRequirement"
+                    >
+
+                        <div class="requirement-icon">
+                            ✓
+                        </div>
+
+                        <div class="requirement-content">
+
+                            <strong>
+                                Minimum Length
+                            </strong>
+
+                            <p>
+                                At least 8 characters
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- UPPERCASE -->
+                    <div
+                        class="requirement"
+                        id="uppercaseRequirement"
+                    >
+
+                        <div class="requirement-icon">
+                            ✓
+                        </div>
+
+                        <div class="requirement-content">
+
+                            <strong>
+                                Uppercase Letter
+                            </strong>
+
+                            <p>
+                                Contains A-Z
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOWERCASE -->
+                    <div
+                        class="requirement"
+                        id="lowercaseRequirement"
+                    >
+
+                        <div class="requirement-icon">
+                            ✓
+                        </div>
+
+                        <div class="requirement-content">
+
+                            <strong>
+                                Lowercase Letter
+                            </strong>
+
+                            <p>
+                                Contains a-z
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- NUMBER -->
+                    <div
+                        class="requirement"
+                        id="numberRequirement"
+                    >
+
+                        <div class="requirement-icon">
+                            ✓
+                        </div>
+
+                        <div class="requirement-content">
+
+                            <strong>
+                                Number
+                            </strong>
+
+                            <p>
+                                Contains 0-9
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SPECIAL CHARACTER -->
+                    <div
+                        class="requirement"
+                        id="specialRequirement"
+                    >
+
+                        <div class="requirement-icon">
+                            ✓
+                        </div>
+
+                        <div class="requirement-content">
+
+                            <strong>
+                                Special Character
+                            </strong>
+
+                            <p>
+                                Contains ! @ # $ % etc.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SECURITY RECOMMENDATION
+            ========================== -->
+            <div
+                class="recommendation"
+                id="recommendation"
+            >
+
+                <div class="recommendation-icon">
+                    💡
+                </div>
+
+                <div class="recommendation-content">
+
+                    <h4>
+                        Security Recommendation
+                    </h4>
+
+                    <p id="recommendationText">
+                        Enter a password to receive
+                        security recommendations.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECURITY INFORMATION
+        ========================== -->
+        <section class="info-grid">
+
+
+            <!-- INFO CARD 1 -->
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Why Strong Passwords?
+                </h3>
+
+                <p>
+                    Strong passwords make unauthorized access
+                    more difficult by increasing the number of
+                    possible combinations.
+                </p>
+
+            </div>
+
+
+            <!-- INFO CARD 2 -->
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🧩
+                </div>
+
+                <h3>
+                    Password Diversity
+                </h3>
+
+                <p>
+                    Combining uppercase, lowercase, numbers,
+                    and special characters improves password
+                    complexity.
+                </p>
+
+            </div>
+
+
+            <!-- INFO CARD 3 -->
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Security Awareness
+                </h3>
+
+                <p>
+                    Avoid predictable passwords, common words,
+                    personal information, and repeated patterns.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECURITY GUIDE
+        ========================== -->
+        <section class="tips-card">
+
+            <div class="tips-header">
+
+                <div class="tips-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <p class="section-label">
+                        SECURITY GUIDE
+                    </p>
+
+                    <h3>
+                        Better Password Practices
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="tips-grid">
+
+
+                <div class="tip">
+
+                    <span class="tip-number">
+                        01
+                    </span>
+
+                    <p>
+                        Use long and unique passwords.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <span class="tip-number">
+                        02
+                    </span>
+
+                    <p>
+                        Combine different character types.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <span class="tip-number">
+                        03
+                    </span>
+
+                    <p>
+                        Avoid easily guessed information.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <span class="tip-number">
+                        04
+                    </span>
+
+                    <p>
+                        Never reuse important passwords.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer">
+
+        <p>
+            PASSWORD SECURITY ANALYZER
+        </p>
+
+        <span>
+            Cybersecurity Awareness Tool
+        </span>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
