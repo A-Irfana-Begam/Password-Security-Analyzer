@@ -193,7 +193,7 @@ function analyzePassword() {
 
     // Update strength display
     strengthText.textContent = strength;
-    scoreText.textContent = `${score}/100`;
+    scoreText.textContent = score;
     strengthFill.style.width = `${score}%`;
 
     // Recommendation
