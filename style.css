@@ -632,3 +632,70 @@ body {
         font-size: 12px;
     }
 }
+
+
+/* ✨ FLOATING GLITTER EFFECT */
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    background-image:
+        radial-gradient(2px 2px at 15% 25%, #fff 50%, transparent 100%),
+        radial-gradient(2px 2px at 75% 15%, #F3D5FF 50%, transparent 100%),
+        radial-gradient(3px 3px at 45% 65%, #E8B9FF 50%, transparent 100%),
+        radial-gradient(2px 2px at 85% 75%, #fff 50%, transparent 100%),
+        radial-gradient(2px 2px at 25% 85%, #E8B9FF 50%, transparent 100%);
+    background-size: 280px 280px;
+    animation: glitterMove 12s linear infinite;
+    opacity: 0.55;
+}
+
+@keyframes glitterMove {
+    from { background-position: 0 0; }
+    to { background-position: 280px 280px; }
+}
+
+/* ✨ CARD HOVER GLOW */
+
+.analyzer-card:hover,
+.info-card:hover,
+.tips-card:hover {
+    box-shadow:
+        0 12px 35px rgba(217,165,255,0.2),
+        0 0 15px rgba(217,165,255,0.12);
+    transform: translateY(-4px);
+}
+
+/* ✨ BUTTON SHINE */
+
+.toggle-button {
+    transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+    box-shadow: 0 0 18px rgba(217,165,255,0.45);
+    transform: translateY(-2px);
+}
+
+/* ✨ NEON STRENGTH BAR */
+
+.strength-fill {
+    box-shadow: 0 0 12px #D9A5FF, 0 0 22px rgba(217,165,255,0.5);
+}
+
+/* ✨ REQUIREMENT HOVER */
+
+.requirement:hover {
+    transform: translateY(-3px);
+    border-color: #D9A5FF;
+    box-shadow: 0 0 15px rgba(217,165,255,0.2);
+}
+
