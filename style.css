@@ -689,3 +689,7 @@ body {
         animation: none;
     }
 }
+
+body {
+    background: lime !important;
+}
