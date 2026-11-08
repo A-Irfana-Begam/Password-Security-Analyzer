@@ -35,84 +35,77 @@ body {
         linear-gradient(135deg, #64252D 0%, #7B2935 50%, #923A43 100%);
 }
 
-/* ANIMATED RED LIGHT WAVES */
+/* ❤️ ANIMATED RED LIGHT WAVES */
 
 body::before,
 body::after {
     content: "";
     position: fixed;
-    inset: -35%;
+    inset: 0;
     pointer-events: none;
-    z-index: -1;
-    filter: blur(55px);
-    will-change: transform;
+    z-index: 0;
 }
 
 body::before {
     background:
         radial-gradient(
-            ellipse at 20% 40%,
-            rgba(255, 55, 75, 0.38),
-            transparent 38%
+            ellipse at 15% 35%,
+            rgba(255, 45, 65, 0.30),
+            transparent 45%
         ),
         radial-gradient(
-            ellipse at 75% 60%,
-            rgba(180, 15, 45, 0.42),
-            transparent 42%
-        ),
-        radial-gradient(
-            ellipse at 50% 90%,
-            rgba(255, 100, 100, 0.23),
-            transparent 38%
+            ellipse at 85% 70%,
+            rgba(255, 90, 90, 0.25),
+            transparent 45%
         );
 
-    opacity: 0.65;
-    animation: redWaveOne 16s ease-in-out infinite alternate;
+    background-size: 200% 200%;
+    animation: redLightFlow 10s ease-in-out infinite alternate;
 }
 
 body::after {
     background:
-        radial-gradient(
-            ellipse at 80% 20%,
-            rgba(255, 90, 90, 0.32),
-            transparent 38%
-        ),
-        radial-gradient(
-            ellipse at 30% 80%,
-            rgba(150, 10, 35, 0.38),
-            transparent 42%
+        linear-gradient(
+            115deg,
+            transparent 30%,
+            rgba(255, 80, 95, 0.13) 48%,
+            transparent 65%
         );
 
-    opacity: 0.55;
-    animation: redWaveTwo 20s ease-in-out infinite alternate;
+    background-size: 250% 250%;
+    animation: redLightSweep 12s ease-in-out infinite alternate;
 }
 
-@keyframes redWaveOne {
+@keyframes redLightFlow {
     0% {
-        transform: translate(-5%, -3%) rotate(0deg) scale(1);
-    }
-
-    50% {
-        transform: translate(5%, 4%) rotate(8deg) scale(1.15);
+        background-position: 0% 0%;
+        opacity: 0.5;
     }
 
     100% {
-        transform: translate(-2%, 7%) rotate(-6deg) scale(1.05);
+        background-position: 100% 100%;
+        opacity: 1;
     }
 }
 
-@keyframes redWaveTwo {
+@keyframes redLightSweep {
     0% {
-        transform: translate(5%, 4%) rotate(0deg) scale(1.1);
-    }
-
-    50% {
-        transform: translate(-5%, -5%) rotate(-10deg) scale(1);
+        background-position: 100% 50%;
     }
 
     100% {
-        transform: translate(3%, -2%) rotate(7deg) scale(1.2);
+        background-position: 0% 50%;
     }
+}
+
+/* KEEP CONTENT ABOVE ANIMATION */
+
+.header,
+.hero,
+.container,
+.footer {
+    position: relative;
+    z-index: 1;
 }
 
 /* HEADER */
@@ -740,18 +733,11 @@ body::after {
     }
 }
 
-/* REDUCED MOTION ACCESSIBILITY */
+/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
     body::before,
     body::after {
         animation: none;
-    }
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
     }
 }
