@@ -23,58 +23,115 @@ html {
     background: #351017;
 }
 
+/* BODY */
+
 body {
     min-height: 100vh;
     font-family: 'DM Sans', sans-serif;
     color: var(--cream);
     overflow-x: hidden;
-
-    background-color: #351017;
-    background-image:
-        radial-gradient(ellipse at 15% 20%, rgba(255, 65, 85, 0.42), transparent 42%),
-        radial-gradient(ellipse at 85% 75%, rgba(255, 110, 110, 0.30), transparent 40%),
-        radial-gradient(ellipse at 50% 50%, rgba(170, 35, 55, 0.35), transparent 55%),
-        linear-gradient(120deg, #351017, #70202D, #A83242, #571722, #351017);
-
-    background-size:
-        180% 180%,
-        180% 180%,
-        160% 160%,
-        300% 300%;
-
-    background-position:
-        0% 0%,
-        100% 100%,
-        50% 50%,
-        0% 50%;
-
-    background-attachment: fixed;
-    animation: redAtmosphere 10s ease-in-out infinite alternate;
+    position: relative;
+    isolation: isolate;
+    background: #351017;
 }
 
-@keyframes redAtmosphere {
+/* CRIMSON LIGHT RIBBONS */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -35%;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            ellipse 48% 9% at 25% 35%,
+            rgba(255, 65, 90, 0.48),
+            rgba(255, 65, 90, 0.20) 35%,
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 45% 8% at 75% 55%,
+            rgba(255, 105, 115, 0.38),
+            rgba(255, 65, 90, 0.16) 40%,
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 40% 7% at 45% 80%,
+            rgba(230, 45, 75, 0.42),
+            rgba(230, 45, 75, 0.15) 42%,
+            transparent 72%
+        );
+
+    filter: blur(22px);
+    opacity: 0.9;
+    transform: rotate(-20deg) scale(1.15);
+    animation: ribbonFlow 18s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: -35%;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            ellipse 42% 3% at 30% 40%,
+            rgba(255, 175, 175, 0.35),
+            transparent 75%
+        ),
+        radial-gradient(
+            ellipse 38% 3% at 70% 65%,
+            rgba(255, 135, 150, 0.28),
+            transparent 75%
+        );
+
+    filter: blur(12px);
+    opacity: 0.65;
+    transform: rotate(-20deg);
+    animation: ribbonHighlight 14s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+/* Keep page content above the animated background */
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes ribbonFlow {
     0% {
-        background-position:
-            0% 0%,
-            100% 100%,
-            50% 50%,
-            0% 50%;
+        transform: translate(-5%, -3%) rotate(-20deg) scale(1.15);
     }
 
     50% {
-        background-position:
-            100% 70%,
-            0% 20%,
-            100% 0%,
-            100% 50%;
+        transform: translate(4%, 3%) rotate(-15deg) scale(1.22);
     }
 
     100% {
-        background-position:
-            20% 100%,
-            80% 0%,
-            0% 100%,
-            0% 50%;
+        transform: translate(-2%, 6%) rotate(-23deg) scale(1.18);
+    }
+}
+
+@keyframes ribbonHighlight {
+    0% {
+        transform: translate(4%, -3%) rotate(-22deg);
+        opacity: 0.35;
+    }
+
+    50% {
+        transform: translate(-3%, 4%) rotate(-16deg);
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: translate(5%, 2%) rotate(-20deg);
+        opacity: 0.45;
     }
 }
 
@@ -707,7 +764,8 @@ body {
 /* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
-    body {
+    body::before,
+    body::after {
         animation: none;
     }
 }
