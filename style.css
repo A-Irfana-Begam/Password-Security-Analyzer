@@ -20,7 +20,7 @@
 
 html {
     min-height: 100%;
-    background: #4A171D;
+    background: #351017;
 }
 
 body {
@@ -28,64 +28,31 @@ body {
     font-family: 'DM Sans', sans-serif;
     color: var(--cream);
     overflow-x: hidden;
-    background: transparent;
     position: relative;
-    isolation: isolate;
-}
 
-/* ANIMATED RED BACKGROUND */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: -30%;
-    z-index: -1;
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at 15% 25%,
-            rgba(255, 80, 90, 0.55),
-            transparent 35%
-        ),
-        radial-gradient(
-            ellipse at 85% 30%,
-            rgba(190, 35, 55, 0.65),
-            transparent 40%
-        ),
-        radial-gradient(
-            ellipse at 55% 85%,
-            rgba(255, 115, 115, 0.35),
-            transparent 35%
-        ),
-        linear-gradient(
-            125deg,
-            #351017,
-            #70202D,
-            #A83242,
-            #571722,
-            #351017
-        );
-
-    background-size: 180% 180%;
-    animation: redAtmosphere 14s ease-in-out infinite alternate;
-    will-change: transform, background-position;
+    background: linear-gradient(
+        120deg,
+        #351017,
+        #70202D,
+        #A83242,
+        #571722,
+        #351017
+    );
+    background-size: 300% 300%;
+    animation: redAtmosphere 12s ease-in-out infinite;
 }
 
 @keyframes redAtmosphere {
     0% {
-        transform: scale(1) rotate(0deg);
         background-position: 0% 50%;
     }
 
     50% {
-        transform: scale(1.12) rotate(3deg);
         background-position: 100% 50%;
     }
 
     100% {
-        transform: scale(1.05) rotate(-3deg);
-        background-position: 50% 100%;
+        background-position: 0% 50%;
     }
 }
 
@@ -718,11 +685,7 @@ body::before {
 /* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
-    body::before {
+    body {
         animation: none;
     }
-}
-
-body {
-    background: red !important;
 }
