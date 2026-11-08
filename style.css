@@ -633,34 +633,65 @@ body {
     }
 }
 
-/* ✨ FLOATING GLITTER EFFECT */
+
+/* ❤️ ANIMATED RED LIGHT WAVES */
 
 body {
     position: relative;
     overflow-x: hidden;
+    isolation: isolate;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: -30%;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(45px);
+    opacity: 0.45;
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 10;
-    background-image:
-        radial-gradient(2px 2px at 15% 25%, #fff 50%, transparent 100%),
-        radial-gradient(2px 2px at 75% 15%, #FFD5D5 50%, transparent 100%),
-        radial-gradient(3px 3px at 45% 65%, #FFAAAA 50%, transparent 100%),
-        radial-gradient(2px 2px at 85% 75%, #fff 50%, transparent 100%),
-        radial-gradient(2px 2px at 25% 85%, #FFAAAA 50%, transparent 100%);
-    background-size: 280px 280px;
-    animation: glitterMove 12s linear infinite;
-    opacity: 0.55;
+    background:
+        radial-gradient(ellipse at 20% 40%, rgba(255, 55, 75, 0.35), transparent 35%),
+        radial-gradient(ellipse at 75% 60%, rgba(180, 15, 45, 0.4), transparent 40%),
+        radial-gradient(ellipse at 50% 90%, rgba(255, 100, 100, 0.2), transparent 35%);
+    animation: redWaveOne 16s ease-in-out infinite alternate;
 }
 
-@keyframes glitterMove {
-    from { background-position: 0 0; }
-    to { background-position: 280px 280px; }
+body::after {
+    background:
+        radial-gradient(ellipse at 80% 20%, rgba(255, 90, 90, 0.3), transparent 35%),
+        radial-gradient(ellipse at 30% 80%, rgba(150, 10, 35, 0.35), transparent 40%);
+    animation: redWaveTwo 20s ease-in-out infinite alternate;
 }
+
+@keyframes redWaveOne {
+    0% {
+        transform: translate(-5%, -3%) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(5%, 4%) rotate(8deg) scale(1.15);
+    }
+    100% {
+        transform: translate(-2%, 7%) rotate(-6deg) scale(1.05);
+    }
+}
+
+@keyframes redWaveTwo {
+    0% {
+        transform: translate(5%, 4%) rotate(0deg) scale(1.1);
+    }
+    50% {
+        transform: translate(-5%, -5%) rotate(-10deg) scale(1);
+    }
+    100% {
+        transform: translate(3%, -2%) rotate(7deg) scale(1.2);
+    }
+}
+
 
 /* ✨ CARD HOVER GLOW */
 
