@@ -20,6 +20,7 @@
 
 html {
     min-height: 100%;
+    background: #4A171D;
 }
 
 body {
@@ -27,40 +28,64 @@ body {
     font-family: 'DM Sans', sans-serif;
     color: var(--cream);
     overflow-x: hidden;
-
-    /* ANIMATED RED BACKGROUND */
-    background: linear-gradient(
-        125deg,
-        #4A171D,
-        #8B2635,
-        #C13D4A,
-        #70202D,
-        #4A171D
-    );
-
-    background-size: 400% 400%;
-    animation: redBackgroundMove 12s ease infinite;
+    background: transparent;
+    position: relative;
+    isolation: isolate;
 }
 
-@keyframes redBackgroundMove {
-    0% {
-        background-position: 0% 50%;
-    }
+/* ANIMATED RED BACKGROUND */
 
-    25% {
-        background-position: 50% 100%;
+body::before {
+    content: "";
+    position: fixed;
+    inset: -30%;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 15% 25%,
+            rgba(255, 80, 90, 0.55),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 85% 30%,
+            rgba(190, 35, 55, 0.65),
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 55% 85%,
+            rgba(255, 115, 115, 0.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            125deg,
+            #351017,
+            #70202D,
+            #A83242,
+            #571722,
+            #351017
+        );
+
+    background-size: 180% 180%;
+    animation: redAtmosphere 14s ease-in-out infinite alternate;
+    will-change: transform, background-position;
+}
+
+@keyframes redAtmosphere {
+    0% {
+        transform: scale(1) rotate(0deg);
+        background-position: 0% 50%;
     }
 
     50% {
+        transform: scale(1.12) rotate(3deg);
         background-position: 100% 50%;
     }
 
-    75% {
-        background-position: 50% 0%;
-    }
-
     100% {
-        background-position: 0% 50%;
+        transform: scale(1.05) rotate(-3deg);
+        background-position: 50% 100%;
     }
 }
 
@@ -412,7 +437,8 @@ body {
     line-height: 1.7;
 }
 
-.recommendation-content h3 {
+.recommendation-content h3,
+.recommendation-content h4 {
     margin-bottom: 5px;
     color: #FFE0E0;
     font-size: 15px;
@@ -689,10 +715,10 @@ body {
     }
 }
 
-/* REDUCED MOTION */
+/* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
-    body {
+    body::before {
         animation: none;
     }
 }
