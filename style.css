@@ -722,3 +722,7 @@ body::before {
         animation: none;
     }
 }
+
+body {
+    background: red !important;
+}
