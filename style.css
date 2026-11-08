@@ -26,86 +26,42 @@ body {
     min-height: 100vh;
     font-family: 'DM Sans', sans-serif;
     color: var(--cream);
-    position: relative;
     overflow-x: hidden;
-    isolation: isolate;
 
-    background:
-        radial-gradient(circle at 10% 10%, rgba(255, 100, 100, 0.22), transparent 35%),
-        linear-gradient(135deg, #64252D 0%, #7B2935 50%, #923A43 100%);
+    /* ANIMATED RED BACKGROUND */
+    background: linear-gradient(
+        125deg,
+        #4A171D,
+        #8B2635,
+        #C13D4A,
+        #70202D,
+        #4A171D
+    );
+
+    background-size: 400% 400%;
+    animation: redBackgroundMove 12s ease infinite;
 }
 
-/* ❤️ ANIMATED RED LIGHT WAVES */
-
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-}
-
-body::before {
-    background:
-        radial-gradient(
-            ellipse at 15% 35%,
-            rgba(255, 45, 65, 0.30),
-            transparent 45%
-        ),
-        radial-gradient(
-            ellipse at 85% 70%,
-            rgba(255, 90, 90, 0.25),
-            transparent 45%
-        );
-
-    background-size: 200% 200%;
-    animation: redLightFlow 10s ease-in-out infinite alternate;
-}
-
-body::after {
-    background:
-        linear-gradient(
-            115deg,
-            transparent 30%,
-            rgba(255, 80, 95, 0.13) 48%,
-            transparent 65%
-        );
-
-    background-size: 250% 250%;
-    animation: redLightSweep 12s ease-in-out infinite alternate;
-}
-
-@keyframes redLightFlow {
+@keyframes redBackgroundMove {
     0% {
-        background-position: 0% 0%;
-        opacity: 0.5;
+        background-position: 0% 50%;
     }
 
-    100% {
-        background-position: 100% 100%;
-        opacity: 1;
+    25% {
+        background-position: 50% 100%;
     }
-}
 
-@keyframes redLightSweep {
-    0% {
+    50% {
         background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 0%;
     }
 
     100% {
         background-position: 0% 50%;
     }
-}
-
-/* KEEP CONTENT ABOVE ANIMATION */
-
-.header,
-.hero,
-.container,
-.footer {
-    position: relative;
-    z-index: 1;
 }
 
 /* HEADER */
@@ -736,8 +692,7 @@ body::after {
 /* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
-    body::before,
-    body::after {
+    body {
         animation: none;
     }
 }
